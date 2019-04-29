@@ -1,12 +1,8 @@
 % image interpolation using scipy.interpolation.griddata
-import os
-import sys
 import numpy as np
 from scipy.interpolate import griddata
 import matplotlib.pyplot as plt
-from PIL import Image
 import pandas as pd
-from scipy import interpolate
 from scipy.misc import imsave
 def make_interpolated_image(data):
     ix = data["x"]
@@ -16,10 +12,10 @@ def make_interpolated_image(data):
     return int_im
 
 data = pd.read_csv( "data.csv")
-print (data.describe())
+#print (data.describe())
 data=data.sort_values(by=["x","y"],axis=0)
 data =data.reset_index(drop=True)
-print (np.where(data["x"]==100)[0][0]-1)
+#print (np.where(data["x"]==100)[0][0]-1)
 
 
 X, Y = np.meshgrid(np.arange(0, data["x"].max()+1, 1), np.arange(0, data["y"].max()+1, 1))
